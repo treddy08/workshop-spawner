@@ -163,6 +163,44 @@
             }
         },
         {
+            "kind": "ClusterRoleBinding",
+            "apiVersion": "rbac.authorization.k8s.io/v1",
+            "metadata": {
+                "name": "${NAME_PREFIX}${WORKSHOP_NAME}-spawner-cluster-admin"
+            },
+            "subjects": [
+                {
+                    "kind": "ServiceAccount",
+                    "name": "${NAME_PREFIX}${WORKSHOP_NAME}-spawner",
+                    "namespace": "${SPAWNER_NAMESPACE}"
+                }
+            ],
+            "roleRef": {
+                "apiGroup": "rbac.authorization.k8s.io",
+                "kind": "ClusterRole",
+                "name": "cluster-admin"
+            }
+        },
+        {
+            "kind": "ClusterRoleBinding",
+            "apiVersion": "rbac.authorization.k8s.io/v1",
+            "metadata": {
+                "name": "${NAME_PREFIX}${WORKSHOP_NAME}-spawner-anyuid"
+            },
+            "subjects": [
+                {
+                    "kind": "ServiceAccount",
+                    "name": "${NAME_PREFIX}${WORKSHOP_NAME}-spawner",
+                    "namespace": "${SPAWNER_NAMESPACE}"
+                }
+            ],
+            "roleRef": {
+                "apiGroup": "rbac.authorization.k8s.io",
+                "kind": "ClusterRole",
+                "name": "system:openshift:scc:anyuid"
+            }
+        },
+        {
             "kind": "OAuthClient",
             "apiVersion": "oauth.openshift.io/v1",
             "metadata": {
