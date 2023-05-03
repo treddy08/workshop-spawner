@@ -30,7 +30,7 @@
         },
         {
             "name": "GIT_REPOSITORY_URL",
-            "value": "https://github.com/openshift-homeroom/workshop-spawner.git",
+            "value": "https://github.com/treddy08/workshop-spawner.git",
             "required": true
         },
         {

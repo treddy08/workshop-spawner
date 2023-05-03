@@ -43,7 +43,7 @@ For each spawner configuration there is a separate template. The templates come 
 The format of the command for deploying the spawner using any of the templates is:
 
 ```
-oc process -f https://raw.githubusercontent.com/openshift-homeroom/workshop-spawner/master/templates/learning-portal-production.json --param SPAWNER_NAMESPACE=`oc project --short` --param CLUSTER_SUBDOMAIN=apps.openshiftcluster.com | oc apply -f -
+oc process -f https://raw.githubusercontent.com/treddy08/workshop-spawner/master/templates/learning-portal-production.json --param SPAWNER_NAMESPACE=`oc project --short` --param CLUSTER_SUBDOMAIN=apps.openshiftcluster.com | oc apply -f -
 ```
 
 In this case we have used the `learning-portal` template. Replace the name with that for the configuration you want to use.
@@ -75,7 +75,7 @@ Each template provides a range of template parameters that can be supplied to cu
 For example, to override the default image for the user environment and supply a reference to a custom image for a specific workshop, use the `WORKSHOP_IMAGE` template parameter. You can use the `WORKSHOP_NAME` template parameter to override the name used for the deployment.
 
 ```
-oc new-app https://raw.githubusercontent.com/openshift-homeroom/workshop-spawner/master/templates/learning-portal-production.json --param SPAWNER_NAMESPACE=`oc project --short` --param WORKSHOP_NAME=lab-workshop-content --param WORKSHOP_IMAGE=quay.io/openshifthomeroom/lab-workshop-content:master
+oc new-app https://raw.githubusercontent.com/treddy08/workshop-spawner/master/templates/learning-portal-production.json --param SPAWNER_NAMESPACE=`oc project --short` --param WORKSHOP_NAME=lab-workshop-content --param WORKSHOP_IMAGE=quay.io/openshifthomeroom/lab-workshop-content:master
 ```
 
 Look at the individual template files in the templates directory for the list of parameters they accept.
