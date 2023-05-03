@@ -299,6 +299,23 @@
                     },
                     "spec": {
                         "serviceAccountName": "${NAME_PREFIX}${WORKSHOP_NAME}-spawner",
+                        "initContainers": [
+                            {
+                                "name": "permission-init",
+                                "image": "alpine:3.16.0",
+                                "command": [
+                                    "/bin/sh",
+                                    "-c",
+                                    "[ ! -f /opt/app-root/data/cookie_secret ] && chmod -R 777 /opt/app-root/data && echo changed permission\necho done\n"
+                                ],
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/opt/app-root/data",
+                                        "name": "data"
+                                    }
+                                ]
+                            }
+                        ],
                         "containers": [
                             {
                                 "name": "spawner",
