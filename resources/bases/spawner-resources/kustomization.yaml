@@ -17,4 +17,4 @@ resources:
 images:
 - name: workshop-spawner
   newName: quay.io/redhat-gpte/workshop-spawner
-  newTag: latest
+  newTag: 7.1.0
