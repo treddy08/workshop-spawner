@@ -30,7 +30,7 @@ from openshift.dynamic.exceptions import ResourceNotFoundError
 workshop_name = os.environ.get('WORKSHOP_NAME')
 
 application_name = os.environ.get('APPLICATION_NAME')
-    
+
 if not workshop_name:
     workshop_name = 'homeroom'
 
@@ -68,7 +68,7 @@ with open(os.path.join(service_account_path, 'namespace')) as fp:
 print('INFO: Namespace is %r.' % namespace)
 
 full_service_account_name = 'system:serviceaccount:%s:%s' % (
-        namespace, service_account_name) 
+        namespace, service_account_name)
 
 print('INFO: Full service account name is %r.' % full_service_account_name)
 
@@ -123,7 +123,7 @@ except ResourceNotFoundError:
     route_resource = None
 
 ingress_resource = api_client.resources.get(
-     api_version='extensions/v1beta1', kind='Ingress')
+     api_version='config.openshift.io/v1', kind='Ingress')
 
 # Create a background thread to dynamically calculate back link to the
 # Homeroom workshop picker if no explicit link is provided, but group is.
@@ -334,7 +334,7 @@ c.Spawner.mem_limit = convert_size_to_bytes(
 # node each time when the image name is not explicitly provided. This is
 # so that during development, changes to the terminal image will always
 # be picked up. Someone developing a new image need only update the
-# 'latest' tag on the image using 'oc tag'. 
+# 'latest' tag on the image using 'oc tag'.
 #
 # Check for TERMINAL_IMAGE is for backward compatibility. Should use
 # WORKSHOP_IMAGE now.
